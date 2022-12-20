@@ -1,4 +1,5 @@
-import { Search } from "@material-ui/icons";
+import { Badge } from "@material-ui/core";
+import { Search, ShoppingCart } from "@material-ui/icons";
 import React from "react";
 import styled from "styled-components";
 
@@ -37,6 +38,7 @@ const Left = styled.div`
 `;
 const Center = styled.div`
 	flex: 1;
+	text-align: center;
 `;
 
 const Logo = styled.h1`
@@ -45,6 +47,15 @@ const Logo = styled.h1`
 
 const Right = styled.div`
 	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+`;
+
+const MenuItem = styled.div`
+	font-size: 14px;
+	cursor: pointer;
+	margin: 25px;
 `;
 
 const Navbar = () => {
@@ -55,13 +66,21 @@ const Navbar = () => {
 					<Language>EN</Language>
 					<SearchContainer>
 						<Input />
-						<Search />
+						<Search style={{ color: "grey", fontSize: 16 }} />
 					</SearchContainer>
 				</Left>
 				<Center>
 					<Logo>Urban Touch</Logo>
 				</Center>
-				<Right>right</Right>
+				<Right>
+					<MenuItem>REGISTER</MenuItem>
+					<MenuItem>SIGN IN</MenuItem>
+					<MenuItem>
+						<Badge badgeContent={3} color="primary">
+							<ShoppingCart />
+						</Badge>
+					</MenuItem>
+				</Right>
 			</Wrapper>
 		</Container>
 	);
