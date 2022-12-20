@@ -1,7 +1,9 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
+import { useState } from "react";
 import styled from "styled-components";
 import "../../App.css";
 import "../Slider/Slider.css";
+import { sliderItems } from "../../../src/data";
 
 const Container = styled.div`
 	width: 100%;
@@ -10,6 +12,7 @@ const Container = styled.div`
 	display: flex;
 	background-color: #e3d5ca;
 	position: relative;
+	overflow: hidden;
 `;
 
 const Arrow = styled.div`
@@ -28,10 +31,13 @@ const Arrow = styled.div`
 	margin: auto;
 	cursor: pointer;
 	opacity: 0.5;
+	z-index: 2;
 `;
 
 const Wrapper = styled.div`
 	height: 100%;
+	display: flex;
+	transform: translateX(${(props) => props.slideIndex * -100}vw);
 `;
 
 const Slide = styled.div`
@@ -39,7 +45,9 @@ const Slide = styled.div`
 	align-items: center;
 	width: 100vw;
 	height: 100vh;
+	margin-right: 10%;
 `;
+
 const ImgContainer = styled.div`
 	flex: 1;
 	height: 100%;
@@ -49,7 +57,7 @@ const ImgContainer = styled.div`
 const Image = styled.img`
 	height: 80%;
 	margin-top: 10%;
-	margin-left: 10%;
+	margin-left: 15%;
 `;
 
 const InfoContainer = styled.div`
@@ -80,26 +88,34 @@ const Button = styled.h1`
 `;
 
 const Slider = () => {
+	const [slideIndex, setSlideIndex] = useState(0);
+	const handleClick = (direction) => {
+		if (direction === "left") {
+			setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
+		} else {
+			setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
+		}
+	};
 	return (
 		<Container>
-			<Arrow direction="left">
+			<Arrow direction="left" onClick={() => handleClick("left")}>
 				<ArrowLeftOutlined />
 			</Arrow>
-			<Wrapper>
-				<Slide>
-					<ImgContainer>
-						<Image src="https://o.remove.bg/downloads/b9d9cd4f-dac4-4277-8bae-a25161220a1f/png-transparent-t-shirt-overcoat-outerwear-clothing-women-zipper-brown-women-accessories-thumbnail-removebg-preview.png" />
-					</ImgContainer>
-					<InfoContainer>
-						<Title className="title">WINTER SALE!</Title>
-						<Description>
-							DON'T COMPROMISE ON STYLE! GET 30% DISCOUNT FOR ALL NEW ARRIVALS!
-						</Description>
-						<Button>SHOW NOW</Button>
-					</InfoContainer>
-				</Slide>
+			<Wrapper slideIndex={slideIndex}>
+				{sliderItems.map((item) => (
+					<Slide bg={item.bg}>
+						<ImgContainer>
+							<Image src={item.img} />
+						</ImgContainer>
+						<InfoContainer>
+							<Title className="title">{item.title}</Title>
+							<Description>{item.description}</Description>
+							<Button>SHOW NOW</Button>
+						</InfoContainer>
+					</Slide>
+				))}
 			</Wrapper>
-			<Arrow direction="right">
+			<Arrow direction="right" onClick={() => handleClick("right")}>
 				<ArrowRightOutlined />
 			</Arrow>
 		</Container>

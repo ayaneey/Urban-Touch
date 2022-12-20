@@ -8,3 +8,16 @@
 	font-size: 14px;
 	font-weight: 500;
 }
+
+.text {
+	animation: slideIn 0.7s ease-in;
+}
+
+@keyframes slideIn {
+	0% {
+		transform: skewX(53deg) translateX(-500px);
+	}
+	100% {
+		transform: skewX(0deg);
+	}
+}

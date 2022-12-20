@@ -2,6 +2,7 @@ import { Badge } from "@material-ui/core";
 import { Search, ShoppingCart } from "@material-ui/icons";
 import React from "react";
 import styled from "styled-components";
+import Logo from "../../assets/urban-touch-logo.png";
 
 const Container = styled.div`
 	height: 60px;
@@ -41,9 +42,10 @@ const Center = styled.div`
 	text-align: center;
 `;
 
-const Logo = styled.h1`
-	font-weight: bold;
-`;
+// const Logo = styled.h1`
+// 	font-weight: 600;
+// 	font-size: 40px;
+// `;
 
 const Right = styled.div`
 	flex: 1;
@@ -70,7 +72,7 @@ const Navbar = () => {
 					</SearchContainer>
 				</Left>
 				<Center>
-					<Logo>Urban Touch</Logo>
+					<img src={Logo} width="120" height="60" />
 				</Center>
 				<Right>
 					<MenuItem>REGISTER</MenuItem>
