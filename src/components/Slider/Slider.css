@@ -1,0 +1,19 @@
+.title {
+	color: red;
+	animation: animate 3s linear infinite;
+}
+
+@keyframes animate {
+	0% {
+		color: red;
+		box-shadow: none;
+	}
+	100% {
+		color: #fff;
+		box-shadow: 0 0 10px #03bcf4;
+		box-shadow: 0 0 20px #03bcf4;
+		box-shadow: 0 0 40px #03bcf4;
+		box-shadow: 0 0 80px #03bcf4;
+		box-shadow: 0 0 160px #03bcf4;
+	}
+}

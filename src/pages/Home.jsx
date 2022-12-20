@@ -1,8 +1,9 @@
 // import { Slider } from "@material-ui/core";
 import React from "react";
-import Announcement from "../components/Announcement";
-import Navbar from "../components/Navbar";
-import Slider from "../components/Slider";
+import Announcement from "../components/Announcement/Announcement";
+import Navbar from "../components/Navbar/Navbar";
+import Slider from "../components/Slider/Slider";
+import "../../src/App.css";
 
 function Home() {
 	return (
